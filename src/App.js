@@ -7,13 +7,12 @@ import React from 'react';
 
 
  
-function Search(){
+function Search(props){
 
-  const [searchTerm, setSearchTerm] = React.useState("");
-
+ 
   const handleChange = (event) => {
     setSearchTerm(event.target.value);
-    console.log(searchTerm);
+    props.onSearch(event);
   }
 
   return(<>
@@ -52,6 +51,8 @@ function Item(props){
   );
 }
 function List(props){
+
+
   return(
     <ul>
       {
@@ -62,7 +63,7 @@ function List(props){
           }
         )
       }
-    <Search/>
+    <Search onSearch={handleSearch}/>
     </ul>
    
   );
@@ -95,6 +96,12 @@ function App() {
     objectID: 1,
     },
     ];
+    const [searchTerm, setSearchTerm] = React.useState("");
+
+
+  const handleSearch = event =>{
+    console.log(event.target.value);
+  }
   return <div>
     <List list ={stories}/>
     </div>;
