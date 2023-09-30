@@ -31,13 +31,11 @@ import React from 'react';
 // console.log(lejla.getName);
 
 const  Item = ({
-  item: {
     title,
     url,
     author,
     num_comments,
     points,
-  },
   }) => (
     <div>
       <li>
@@ -51,15 +49,23 @@ const  Item = ({
     </div>
   );
 
-function List(props){
+function List({list}){
 
 
   return(
     <ul>
       {
-        props.list.map(function(item){
+        list.map(function(item){
             return(
-              <Item key ={item.objectID} item={item}/>
+              <Item 
+              key ={item.objectID} 
+              item={item}
+              title ={item.title}
+              url = {item.url}
+              author = {item.author}
+              num_comments ={item.num_comments}
+              points = {item.points}
+              />
             );
           }
         )
