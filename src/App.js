@@ -9,10 +9,11 @@ import React from 'react';
  
 function Search(props){
 
+  const {search, onSearch} = props
 
   return(<>
     <label htmlFor='search'>Search: </label>
-    <input id="search" type="text" onChange={props.onSearch} value={props.search}></input>
+    <input id="search" type="text" onChange={onSearch} value={search}></input>
   </>);
 }
 
