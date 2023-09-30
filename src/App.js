@@ -31,12 +31,14 @@ import React from 'react';
 // console.log(lejla.getName);
 
 const  Item = ({
-  title,
-  url,
-  author,
-  num_comments,
-  points,
-  },) => (
+  item: {
+    title,
+    url,
+    author,
+    num_comments,
+    points,
+  },
+  }) => (
     <div>
       <li>
                 <span>
