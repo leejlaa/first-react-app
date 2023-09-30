@@ -7,15 +7,13 @@ import React from 'react';
 
 
  
-function Search(props){
+  const Search = ({search, onSearch}) =>(
+    <div>
+      <label htmlFor='search'>Search: </label>
+      <input id="search" type="text" onChange={onSearch} value={search}></input>
+    </div>
+  );
 
-  const {search, onSearch} = props
-
-  return(<>
-    <label htmlFor='search'>Search: </label>
-    <input id="search" type="text" onChange={onSearch} value={search}></input>
-  </>);
-}
 
 
 // class Person{
