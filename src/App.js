@@ -30,20 +30,25 @@ import React from 'react';
 // const lejla = new Person("leki", "D.");
 // console.log(lejla.getName);
 
-function Item(props){
-  return(
+const  Item = ({
+  title,
+  url,
+  author,
+  num_comments,
+  points,
+  },) => (
     <div>
       <li>
                 <span>
-                  <a href={props.item.url}>{props.item.title}</a>
+                  <a href={url}>{title}</a>
                 </span>
-                <span>{props.item.author}</span>
-                <span>{props.item.num_comments}</span>
-                <span>{props.item.points}</span>
+                <span>{author}</span>
+                <span>{num_comments}</span>
+                <span>{points}</span>
       </li>
     </div>
   );
-}
+
 function List(props){
 
 
