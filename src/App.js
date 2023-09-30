@@ -55,19 +55,15 @@ function List({list}){
   return(
     <ul>
       {
-        list.map(function(item){
-            return(
+        list.map( ({objectID, ...item}) => ( // here i used rest operator to separate objectID into a variable an the REST into item object.
               <Item 
-              key ={item.objectID} 
+              key ={ objectID} 
               {...item} // spread operator in JS
               />
-            );
-          }
-        )
+            )
+          )
       }
-    
     </ul>
-   
   );
 }
 // function Header(){
