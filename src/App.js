@@ -59,12 +59,7 @@ function List({list}){
             return(
               <Item 
               key ={item.objectID} 
-              item={item}
-              title ={item.title}
-              url = {item.url}
-              author = {item.author}
-              num_comments ={item.num_comments}
-              points = {item.points}
+              {...item} // spread operator in JS
               />
             );
           }
