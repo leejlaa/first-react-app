@@ -9,15 +9,10 @@ import React from 'react';
  
 function Search(props){
 
- 
-  const handleChange = (event) => {
-    setSearchTerm(event.target.value);
-    props.onSearch(event);
-  }
 
   return(<>
     <label htmlFor='search'>Search: </label>
-    <input id="search" type="text" onChange={handleChange}></input>
+    <input id="search" type="text" onChange={props.onSearch} value={props.search}></input>
   </>);
 }
 
@@ -63,7 +58,7 @@ function List(props){
           }
         )
       }
-    <Search onSearch={handleSearch}/>
+    
     </ul>
    
   );
@@ -100,10 +95,11 @@ function App() {
 
 
   const handleSearch = event =>{
-    console.log(event.target.value);
+    setSearchTerm(event.target.value);
   }
   return <div>
     <List list ={stories}/>
+    <Search search={searchTerm} onSearch={handleSearch}/>
     </div>;
 }
 
