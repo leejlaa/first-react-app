@@ -6,11 +6,19 @@ import React from 'react';
 
 
 
+const Button = ({onClick}) =>(
+  <div>
+    <button type="button" onClick={onClick} >
+      Click me
+    </button>
+  </div>
+);
+
  
-  const Search = ({search, onSearch}) =>(
+  const InputWithLabel = ({ id,type = 'text', label, value, onInputChange }) =>(
     <div>
-      <label htmlFor='search'>Search: </label>
-      <input id="search" type="text" onChange={onSearch} value={search}></input>
+      <label htmlFor={id}>{label} </label>
+      <input id="search" type={type} value={value} onChange={onInputChange}></input>
     </div>
   );
 
@@ -94,11 +102,20 @@ function App() {
     objectID: 1,
     },
     ];
-    const [searchTerm, setSearchTerm] = React.useState("");
+    const [searchTerm, setSearchTerm] = React.useState(
+      localStorage.getItem('search') || 'React'
+      );
+      const [count, setCount] = React.useState(0);
+
+      const handleClick = () => {
+        setCount(count + 1);
+        console.log(count);
+      };
 
 
   const handleSearch = event =>{
     setSearchTerm(event.target.value);
+    localStorage.setItem('search', event.target.value);
   }
 
   const searchedStories = stories.filter((story) =>
@@ -107,7 +124,8 @@ function App() {
 
   return <div>
     <List list ={searchedStories}/>
-    <Search search={searchTerm} onSearch={handleSearch}/>
+    <InputWithLabel search={searchTerm} onSearch={handleSearch}/>
+    <Button onClick={handleClick}>Toggle</Button>
     </div>;
 }
 
